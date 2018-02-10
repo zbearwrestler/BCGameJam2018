@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 23938038561417146}
   - component: {fileID: 102060016681772744}
   m_Layer: 8
-  m_Name: New Text
+  m_Name: AngeryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00252606a4db0bc4b8bce663420e6849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectileType: 0
   Speed: 0.2
   AttachedTextMesh: {fileID: 102060016681772744}
 --- !u!212 &212222755107094654
