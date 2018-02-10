@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00252606a4db0bc4b8bce663420e6849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileType: 1
+  ProjectileType: 2
   Speed: 0.15
   AttachedTextMesh: {fileID: 102060016681772744}
 --- !u!212 &212222755107094654
