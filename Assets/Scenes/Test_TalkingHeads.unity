@@ -226,7 +226,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 556414979}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CenterPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 580789561}
   - component: {fileID: 580789560}
   - component: {fileID: 580789559}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TalkingHead_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 947615843}
   - component: {fileID: 947615844}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HeadSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1154995327}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CenterPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1460658785}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TalkingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 1713721671}
   - component: {fileID: 1713721670}
   - component: {fileID: 1713721672}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TalkingHead_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1897245963}
   - component: {fileID: 1897245964}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HeadSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1979685534}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TalkingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
