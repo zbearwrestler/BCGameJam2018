@@ -43,6 +43,7 @@ public class FireScript : MonoBehaviour
         Physics.IgnoreLayerCollision(8, 9);
 
         loveBombCooldownIsActive = true;
+        lastLoveBombFireTime = Time.time;
 
     }
 
@@ -65,10 +66,7 @@ public class FireScript : MonoBehaviour
             FireLoveBomb();
         }
 
-        if (loveBombCooldownIsActive)
-        {
-            coolDownImage.fillAmount += 1 / loveBombCooldown * Time.deltaTime;
-        }
+        CooldownUI();
 
     }
 
@@ -125,6 +123,10 @@ public class FireScript : MonoBehaviour
 
             lastLoveBombFireTime = Time.time;
 
+            loveBombCooldownIsActive = true;
+
+            coolDownImage.fillAmount = 1;
+
             Destroy(bullet, 10f);
 
         }
@@ -134,6 +136,19 @@ public class FireScript : MonoBehaviour
     void ChangeMode()
     {
         fireMode = !fireMode;
+    }
+
+    void CooldownUI()
+    {
+        if (loveBombCooldownIsActive)
+        {
+            coolDownImage.fillAmount -= 1 / loveBombCooldown * (Time.deltaTime);
+        }
+
+        if (Time.time > lastLoveBombFireTime + loveBombCooldown)
+        {
+            loveBombCooldownIsActive = false;
+        }
     }
 
 }
