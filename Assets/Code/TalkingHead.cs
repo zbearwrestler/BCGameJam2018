@@ -129,13 +129,13 @@ public class TalkingHead : MonoBehaviour {
     private void SpawnInsult()
     {
         GameObject spawnedObject = GameObject.Instantiate((Random.Range(0,100)>mAggressiveness) ? PassAggPositivePrefab : AngryPrefab, SpawnPosition.position, Quaternion.identity);
-        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, HeadID);
+        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, HeadID, 0);
     }
 
     private void SpawnNeutral()
     {
         GameObject spawnedObject = GameObject.Instantiate(NeutralPrefab, SpawnPosition.position, Quaternion.identity);
-        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, HeadID);
+        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, HeadID, 0);
     }
 
 }
