@@ -9,7 +9,7 @@ public class TalkingHead : MonoBehaviour {
     public float SpawnSpeed;
     public GameObject AngryPrefab;
     public GameObject NeutralPrefab;
-    public GameObject PassAggPrefab;
+    public GameObject PassAggPositivePrefab;
 
     public Transform SpawnPosition;
     public Transform CenterPosition;
@@ -104,7 +104,7 @@ public class TalkingHead : MonoBehaviour {
                     case TextProjectile.Type.Neutral:
                         ++Communicativeness;
                         break;
-                    case TextProjectile.Type.Friendly:
+                    case TextProjectile.Type.Positive:
                         ++Communicativeness;
                         --Aggressiveness;
                         break;
@@ -128,14 +128,14 @@ public class TalkingHead : MonoBehaviour {
 
     private void SpawnInsult()
     {
-        GameObject spawnedObject = GameObject.Instantiate((Random.Range(0,100)>mAggressiveness) ? PassAggPrefab : AngryPrefab, SpawnPosition.position, Quaternion.identity);
-        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, "You suck!!!", HeadID);
+        GameObject spawnedObject = GameObject.Instantiate((Random.Range(0,100)>mAggressiveness) ? PassAggPositivePrefab : AngryPrefab, SpawnPosition.position, Quaternion.identity);
+        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, HeadID);
     }
 
     private void SpawnNeutral()
     {
         GameObject spawnedObject = GameObject.Instantiate(NeutralPrefab, SpawnPosition.position, Quaternion.identity);
-        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, "I like cake", HeadID);
+        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, HeadID);
     }
 
 }

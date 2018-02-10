@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TextProjectile : MonoBehaviour {
-    public enum Type { Angry, PassAggressive, Neutral, Friendly}
+    public enum Type { Angry, PassAggressive, Neutral, Positive}
     public Type ProjectileType;
 
     public float Speed;
@@ -13,6 +13,8 @@ public class TextProjectile : MonoBehaviour {
     private Vector2 mTrajectory;
 
     private int spawnedBy;
+    private int convoIndex;
+
     public int SpawnedBy
     {
         get
@@ -26,10 +28,45 @@ public class TextProjectile : MonoBehaviour {
         gameObject.transform.Translate(mTrajectory * Speed * Time.timeScale);
 	}
 
-    public void Initialize(Vector2 traj, string content, int spawnerID)
+    public void Initialize(Vector2 traj, int spawnerID)
     {
         mTrajectory = traj;
-        AttachedTextMesh.text = content;
         spawnedBy = spawnerID;
+        SetUpText();
+    }
+
+    private void SetUpText()
+    {
+        switch (ProjectileType)
+        {
+            case Type.Angry:
+                AttachedTextMesh.text = ArgumentText.NextLine("Angery");
+                break;
+            case Type.PassAggressive:
+                AttachedTextMesh.text = ArgumentText.NextLine("PassAggressive");
+                break;
+            case Type.Neutral:
+                AttachedTextMesh.text = ArgumentText.NextLine("Neutral");
+                break;
+            case Type.Positive:
+                AttachedTextMesh.text = ArgumentText.NextLine("Positive");
+                break;
+        }
+        convoIndex = ArgumentText.convoCounter;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "PlayerBullet")
+        {
+            if (ProjectileType == Type.Positive || ProjectileType == Type.PassAggressive)
+            {
+                ProjectileType = Type.Positive;
+                AttachedTextMesh.text = ArgumentText.GetLine("Positive", convoIndex);
+            }else
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
