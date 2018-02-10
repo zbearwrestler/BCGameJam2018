@@ -28,7 +28,7 @@ public class TextProjectile : MonoBehaviour {
         gameObject.transform.Translate(mTrajectory * Speed * Time.timeScale);
 	}
 
-    public void Initialize(Vector2 traj,int line, int spawnerID)
+    public void Initialize(Vector2 traj, int spawnerID, int line)
     {
         mTrajectory = traj;
         spawnedBy = spawnerID;
@@ -59,6 +59,8 @@ public class TextProjectile : MonoBehaviour {
     {
         if (collision.gameObject.tag == "PlayerBullet")
         {
+            Destroy(collision.gameObject);
+
             if (ProjectileType == Type.Positive || ProjectileType == Type.PassAggressive)
             {
                 ProjectileType = Type.Positive;
