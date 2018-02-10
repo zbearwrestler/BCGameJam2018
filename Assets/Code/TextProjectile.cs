@@ -28,7 +28,7 @@ public class TextProjectile : MonoBehaviour {
         gameObject.transform.Translate(mTrajectory * Speed * Time.timeScale);
 	}
 
-    public void Initialize(Vector2 traj, int spawnerID)
+    public void Initialize(Vector2 traj, int convoIndex, int spawnerID)
     {
         mTrajectory = traj;
         spawnedBy = spawnerID;
@@ -40,29 +40,28 @@ public class TextProjectile : MonoBehaviour {
         switch (ProjectileType)
         {
             case Type.Angry:
-                AttachedTextMesh.text = ArgumentText.NextLine("Angery");
+                AttachedTextMesh.text = ArgumentText.GetLine("Angery", spawnedBy, convoIndex);
                 break;
             case Type.PassAggressive:
-                AttachedTextMesh.text = ArgumentText.NextLine("PassAggressive");
+                AttachedTextMesh.text = ArgumentText.GetLine("PassAggressive", spawnedBy, convoIndex);
                 break;
             case Type.Neutral:
-                AttachedTextMesh.text = ArgumentText.NextLine("Neutral");
+                AttachedTextMesh.text = ArgumentText.GetLine("Neutral", spawnedBy, convoIndex);
                 break;
             case Type.Positive:
-                AttachedTextMesh.text = ArgumentText.NextLine("Positive");
+                AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
                 break;
         }
-        convoIndex = ArgumentText.convoCounter;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "PlayerBullet")
         {
             if (ProjectileType == Type.Positive || ProjectileType == Type.PassAggressive)
             {
                 ProjectileType = Type.Positive;
-                AttachedTextMesh.text = ArgumentText.GetLine("Positive", convoIndex);
+                AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
             }else
             {
                 Destroy(gameObject);
