@@ -36,6 +36,8 @@ public class FireScript : MonoBehaviour
 
         fireMode = true;
 
+        Physics.IgnoreLayerCollision(8, 9);
+
     }
 
     // Update is called once per frame
@@ -71,7 +73,7 @@ public class FireScript : MonoBehaviour
 
                 bullet.transform.parent = null;
 
-                bullet.GetComponent<Rigidbody>().velocity = new Vector2(0f, blockerVelocity);
+                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, blockerVelocity);
 
                 lastBlockerFireTime = Time.time;
 
@@ -88,7 +90,7 @@ public class FireScript : MonoBehaviour
 
                 bullet.transform.parent = null;
 
-                bullet.GetComponent<Rigidbody>().velocity = new Vector2(0f, destroyerVelocity);
+                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, destroyerVelocity);
 
                 lastDestroyerFireTime = Time.time;
 
@@ -108,7 +110,7 @@ public class FireScript : MonoBehaviour
 
             bullet.transform.parent = null;
 
-            bullet.GetComponent<Rigidbody>().velocity = new Vector2(0f, loveBombVelocity);
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, loveBombVelocity);
 
             lastLoveBombFireTime = Time.time;
 
