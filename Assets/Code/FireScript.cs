@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FireScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class FireScript : MonoBehaviour
     public GameObject destroyerPrefab;
     public GameObject loveBombPrefab;
     public Transform bulletSpawn;
+    public Image coolDownImage;
 
     [Header("Blocker Properties")]
     public float blockerVelocity;
@@ -25,6 +27,8 @@ public class FireScript : MonoBehaviour
 
     private bool fireMode; // true is blocker, false is destroyer
 
+    private bool loveBombCooldownIsActive;
+
     private float lastBlockerFireTime;
     private float lastDestroyerFireTime;
     private float lastLoveBombFireTime;
@@ -37,6 +41,8 @@ public class FireScript : MonoBehaviour
         fireMode = true;
 
         Physics.IgnoreLayerCollision(8, 9);
+
+        loveBombCooldownIsActive = true;
 
     }
 
@@ -57,6 +63,11 @@ public class FireScript : MonoBehaviour
         if (Input.GetButtonDown("Fire3")) //fire love bomb
         {
             FireLoveBomb();
+        }
+
+        if (loveBombCooldownIsActive)
+        {
+            coolDownImage.fillAmount += 1 / loveBombCooldown * Time.deltaTime;
         }
 
     }
