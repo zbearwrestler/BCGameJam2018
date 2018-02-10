@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 079d2de1257bf1144a3e7c5a52f6b13c
 folderAsset: yes
 timeCreated: 1518251017
+=======
+guid: 62f81f4a30ed2714bbdd44e57dbb50c3
+folderAsset: yes
+timeCreated: 1518255373
+>>>>>>> playerAndProjectiles
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
