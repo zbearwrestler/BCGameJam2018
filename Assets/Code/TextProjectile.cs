@@ -28,10 +28,11 @@ public class TextProjectile : MonoBehaviour {
         gameObject.transform.Translate(mTrajectory * Speed * Time.timeScale);
 	}
 
-    public void Initialize(Vector2 traj, int spawnerID)
+    public void Initialize(Vector2 traj,int line, int spawnerID)
     {
         mTrajectory = traj;
         spawnedBy = spawnerID;
+        convoIndex = line;
         SetUpText();
     }
 
@@ -40,19 +41,18 @@ public class TextProjectile : MonoBehaviour {
         switch (ProjectileType)
         {
             case Type.Angry:
-                AttachedTextMesh.text = ArgumentText.NextLine("Angery");
+                AttachedTextMesh.text = ArgumentText.GetLine("Angery", spawnedBy, convoIndex);
                 break;
             case Type.PassAggressive:
-                AttachedTextMesh.text = ArgumentText.NextLine("PassAggressive");
+                AttachedTextMesh.text = ArgumentText.GetLine("PassAggressive", spawnedBy, convoIndex);
                 break;
             case Type.Neutral:
-                AttachedTextMesh.text = ArgumentText.NextLine("Neutral");
+                AttachedTextMesh.text = ArgumentText.GetLine("Neutral", spawnedBy, convoIndex);
                 break;
             case Type.Positive:
-                AttachedTextMesh.text = ArgumentText.NextLine("Positive");
+                AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
                 break;
         }
-        convoIndex = ArgumentText.convoCounter;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -62,7 +62,7 @@ public class TextProjectile : MonoBehaviour {
             if (ProjectileType == Type.Positive || ProjectileType == Type.PassAggressive)
             {
                 ProjectileType = Type.Positive;
-                AttachedTextMesh.text = ArgumentText.GetLine("Positive", convoIndex);
+                AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
             }else
             {
                 Destroy(gameObject);
