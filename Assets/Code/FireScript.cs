@@ -11,6 +11,11 @@ public class FireScript : MonoBehaviour
     public Transform bulletSpawn;
     public Image coolDownImage;
 
+    [Header("Spawns")]
+    public Transform bulletSpawn;
+    public Transform loveBombSpawn;
+
+
     [Header("Brain Properties")]
     public float brainVelocity;
     public float brainCooldown;
@@ -59,7 +64,6 @@ public class FireScript : MonoBehaviour
         {
             //gameObject.GetComponent<AudioSource>().Play();
             AudioManager.Play("BrainShot");
-
             GameObject bullet = Instantiate(brainPrefab, bulletSpawn);
 
             bullet.transform.parent = null;
@@ -78,20 +82,18 @@ public class FireScript : MonoBehaviour
         if (Time.time > lastLoveBombFireTime + loveBombCooldown)
         {
 
-            AudioManager.Play("LoveBomb");
-            GameObject bullet = Instantiate(loveBombPrefab, bulletSpawn);
+	    AudioManager.Play("LoveBomb");
+            GameObject bomb = Instantiate(loveBombPrefab, loveBombSpawn);
 
-            bullet.transform.parent = null;
+            bomb.GetComponent<LoveBomb>().Begin();
 
-            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, loveBombVelocity);
+            bomb.transform.parent = null;
 
             lastLoveBombFireTime = Time.time;
 
             loveBombCooldownIsActive = true;
 
             coolDownImage.fillAmount = 1;
-
-            Destroy(bullet, 10f);
         }
 
     }
