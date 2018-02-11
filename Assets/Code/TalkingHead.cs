@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TalkingHead : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class TalkingHead : MonoBehaviour
             if (mAggressiveness > 100)
             {
                 Aggressiveness = 100;
+                EndGame(GameScore.EndResult.Anger);
                 Debug.Log("Lose!!!!!");
             }
             if (mAnimator)
@@ -60,6 +62,7 @@ public class TalkingHead : MonoBehaviour
             {
                 Communicativeness = 0;
                 Debug.Log("Lose!!!!!");
+                EndGame(GameScore.EndResult.NotTalking);
             }
         }
     }
@@ -207,6 +210,14 @@ public class TalkingHead : MonoBehaviour
         target.TriggerWaitToReply();
         //remove this coroutine from list
 
+    }
+
+
+    private void EndGame(GameScore.EndResult result)
+    {
+        GameScore.Instance.Save(Time.timeSinceLevelLoad, HeadID, result);
+        //TODO delay
+        SceneManager.LoadScene("EndScreen");
     }
 
 }
