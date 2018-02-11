@@ -6,7 +6,7 @@ public class ConflictDiamond : MonoBehaviour {
 
     public GameObject head;
     
-    public TalkingHead talkingHead;
+    private TalkingHead talkingHead;
 
     public GameObject position;
 
@@ -17,6 +17,9 @@ public class ConflictDiamond : MonoBehaviour {
     private float yPos; // Aggression
     private float yInitial;
 
+    public GameObject diamondPrefab;
+    public Transform canvas;
+
     // Use this for initialization
     void Start () {
 
@@ -25,7 +28,9 @@ public class ConflictDiamond : MonoBehaviour {
         xInitial = position.transform.position.x;
         yInitial = position.transform.position.y;
 
-	}
+        GameObject diamond = (GameObject)Instantiate(diamondPrefab, canvas);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
