@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: b2eabaaae1cca7048be2199fd02c70c8
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 80c5ec69209c4e94ca1edc3cf3c92335
+  - enabled: 1
     path: Assets/Scenes/TalkingHeads.unity
     guid: bf558dea00a996e44943655e5ae457e0
   - enabled: 1
@@ -20,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: e4ded2beafd15744a86247792f02b9d2
+  - enabled: 1
+    path: Assets/Scenes/VictoryScreen.unity
+    guid: 9f00534953b4a99488cc88e3e792ca05
