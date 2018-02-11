@@ -14,8 +14,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
   - m_Name: BecomeAngery
     m_Type: 9
     m_DefaultFloat: 0
@@ -36,30 +34,16 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: BecomeNeutrual
     m_Type: 9
-=======
-  - m_Name: AngerLevel
-    m_Type: 1
->>>>>>> origin/master
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-<<<<<<< HEAD
   - m_Name: BecomeTickedOff
     m_Type: 9
-=======
-  - m_Name: AngerLevel
-    m_Type: 1
->>>>>>> origin/master
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
