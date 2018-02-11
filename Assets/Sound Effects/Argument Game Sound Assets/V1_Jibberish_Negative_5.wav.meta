@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 9763f51def0e3f24ca752e729e020f97
 timeCreated: 1518302642
+=======
+guid: 763fcfcf0502d494c890fc93736a30f0
+timeCreated: 1518305928
+>>>>>>> Chelsea
 licenseType: Free
 AudioImporter:
   externalObjects: {}
