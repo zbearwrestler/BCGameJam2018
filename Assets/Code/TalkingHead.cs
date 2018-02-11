@@ -7,16 +7,19 @@ public class TalkingHead : MonoBehaviour
     //Public Variables
     public int HeadID;
 
-    public float SpawnSpeed;
+    [Header("Prefabs")]
     public GameObject AngryPrefab;
     public GameObject NeutralPrefab;
     public GameObject PassAggPrefab;
 
+    [Header("Spawning")]
     public Transform[] SpawnPosition;
     public Transform[] CenterPosition;
+    public float FastestSpawnRate = 0.5f;
+    public float SlowestSpawnRate = 1.5f;
 
-    public List<Coroutine> replyCoroutines;
 
+    [Header("Other")]
     public bool IsStarter;
 
     public TalkingHead target;
@@ -33,6 +36,7 @@ public class TalkingHead : MonoBehaviour
             if (mAggressiveness < 0) { mAggressiveness = 0; }
             if (mAggressiveness > 100)
             {
+                Aggressiveness = 100;
                 Debug.Log("Lose!!!!!");
             }
             if (mAnimator)
@@ -54,6 +58,7 @@ public class TalkingHead : MonoBehaviour
             if (mCommunicativeness > 100) { mCommunicativeness = 100; }
             if (mCommunicativeness < 0)
             {
+                Communicativeness = 0;
                 Debug.Log("Lose!!!!!");
             }
         }
@@ -62,10 +67,12 @@ public class TalkingHead : MonoBehaviour
     //Private Variables
     private Vector2[] mSpawnDirections = new Vector2[3];
     private Animator mAnimator;
-    private float mInsultSpawnTimer = 0;
 
     private float mAggressiveness = 50f;
     private float mCommunicativeness = 50f;
+    private List<Coroutine> replyCoroutines;
+
+    private float mIncrement = 3;
 
     //--------------------------------------------------
     //Unity Functions
@@ -102,18 +109,18 @@ public class TalkingHead : MonoBehaviour
                 switch (textProj.ProjectileType)
                 {
                     case TextProjectile.Type.Angry:
-                        Aggressiveness += 2;
+                        Aggressiveness += 2*mIncrement;
                         break;
                     case TextProjectile.Type.PassAggressive:
-                        ++Aggressiveness;
-                        --Communicativeness;
+                        Aggressiveness += mIncrement;
+                        Communicativeness -= mIncrement;
                         break;
                     case TextProjectile.Type.Neutral:
-                        ++Communicativeness;
+                        Communicativeness += mIncrement/2f;
                         break;
                     case TextProjectile.Type.Positive:
-                        ++Communicativeness;
-                        --Aggressiveness;
+                        Communicativeness += mIncrement;
+                        Aggressiveness -= mIncrement;
                         break;
                     default:
                         break;
@@ -143,9 +150,9 @@ public class TalkingHead : MonoBehaviour
         float totalOdds = Communicativeness + 100f;
         float randomResult = Random.Range(0, totalOdds);
 
-        GameObject prefabToSpawn = AngryPrefab;
+        GameObject prefabToSpawn = PassAggPrefab;
         if (randomResult < Communicativeness) { prefabToSpawn = NeutralPrefab; }
-        else if (randomResult < Communicativeness + Aggressiveness) { prefabToSpawn = PassAggPrefab; }
+        else if (randomResult < Communicativeness + Aggressiveness) { prefabToSpawn = AngryPrefab; }
 
         int spawnLane = Random.Range(0, 3);
 
@@ -162,8 +169,32 @@ public class TalkingHead : MonoBehaviour
 
     public void TriggerWaitToReply()
     {
-        float time = 1f; //calculate time
+        float time = 1f;
+        //calculate time
+
+        time = Mathf.Lerp(SlowestSpawnRate, FastestSpawnRate, (Aggressiveness + (Communicativeness/2))/150f);
+        //Debug.Log(gameObject.name + "Anger: "  + Aggressiveness + ", Talky: " + Communicativeness + " => " + time);
+        
+
+
         StartCoroutine(WaitAndReply(time));
+    }
+
+    public void NotifyWasInterrupted()
+    {
+        //someone shot down your neutral statement. What meanies!
+        //Debug.Log("Shot down!");
+        Communicativeness -= 2*mIncrement;
+        Aggressiveness += 2*mIncrement;
+    }
+
+    public void StopShooting()
+    {
+        foreach (Coroutine coro in replyCoroutines)
+        {
+            StopCoroutine(coro);
+        }
+        replyCoroutines.Clear();
     }
 
     private IEnumerator WaitAndReply(float time)

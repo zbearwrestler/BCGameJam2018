@@ -76,6 +76,11 @@ public class TextProjectile : MonoBehaviour {
             }
             else
             {
+                if (ProjectileType == Type.Neutral)
+                {
+                    //shot down neutral - notify talking head
+                    TalkingHeadManager.Instance.NotifyWasInterrupted(SpawnedBy);
+                }
                 Destroy(gameObject);
             }
         }

@@ -259,6 +259,10 @@ Prefab:
       propertyPath: m_Name
       value: TalkingHead_Left
       objectReference: {fileID: 0}
+    - target: {fileID: 1428790083820810, guid: 4a2c7f5757c4db8428bfe425efad0f7d, type: 2}
+      propertyPath: m_TagString
+      value: TalkingHead
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a2c7f5757c4db8428bfe425efad0f7d, type: 2}
   m_IsPrefabParent: 0
@@ -885,6 +889,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1428790083820810, guid: 4a2c7f5757c4db8428bfe425efad0f7d, type: 2}
+      propertyPath: m_TagString
+      value: TalkingHead
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a2c7f5757c4db8428bfe425efad0f7d, type: 2}
   m_IsPrefabParent: 0
@@ -1043,3 +1051,43 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1434989729}
   m_Script: {fileID: 11500000, guid: 5a5c4ec5c936e0d478f9b16a18e0ee00, type: 3}
+--- !u!1 &2067625617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2067625619}
+  - component: {fileID: 2067625618}
+  m_Layer: 0
+  m_Name: TalkingHeadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2067625618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2067625617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1542e9dea27ea4db508562457a735d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2067625619
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2067625617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.919247, y: -0.2996824, z: -0.022049975}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
