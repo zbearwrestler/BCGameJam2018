@@ -49,10 +49,10 @@ public class FireScript : MonoBehaviour
             ChangeMode();
         }*/
 
-        if (Input.GetButtonDown("Fire1")) //fire button
+        if (Input.GetButtonDown("Fire1")  || Input.GetKeyDown(KeyCode.Space)) //fire button
         {
             FireLoveBomb();
-            gameObject.GetComponent<AudioSource>().Play();
+            
         }
 
         /*if (Input.GetButtonDown("Fire3") || Input.GetButtonDown("Fire2")) //fire love bomb
@@ -106,6 +106,8 @@ public class FireScript : MonoBehaviour
 
         if (Time.time > lastLoveBombFireTime + loveBombCooldown)
         {
+
+            gameObject.GetComponent<AudioSource>().Play();
 
             GameObject bullet = (GameObject)Instantiate(loveBombPrefab, bulletSpawn);
 
