@@ -6,8 +6,6 @@ public class ConflictDiamond : MonoBehaviour {
     
     private TalkingHead talkingHead;
 
-    public GameObject position;
-
     private const float MAX_DISTANCE = 50f;
 
     private float xPos; // Communication
@@ -17,25 +15,26 @@ public class ConflictDiamond : MonoBehaviour {
 
     public GameObject diamondPrefab;
     public Transform canvas;
+    public GameObject Dot;
 
     // Use this for initialization
     void Start ()
     {
         talkingHead = gameObject.GetComponent<TalkingHead>();
 
-        xInitial = position.transform.position.x;
-        yInitial = position.transform.position.y;
-
         GameObject diamond = (GameObject)Instantiate(diamondPrefab, canvas);
 
+        xInitial = Dot.transform.position.x;
+        yInitial = Dot.transform.position.y;
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         xPos = xInitial + talkingHead.Communicativeness - MAX_DISTANCE;
         yPos = yInitial + talkingHead.Aggressiveness - MAX_DISTANCE;
 
-        position.transform.position = new Vector2(xPos, yPos);
+        Dot.transform.position = new Vector2(xPos, yPos);
 	}
 }

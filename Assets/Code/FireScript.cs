@@ -5,108 +5,67 @@ using UnityEngine.UI;
 
 public class FireScript : MonoBehaviour
 {
-
     [Header("Prefabs")]
-    public GameObject blockerPrefab;
-    public GameObject destroyerPrefab;
+    public GameObject brainPrefab;
     public GameObject loveBombPrefab;
     public Transform bulletSpawn;
     public Image coolDownImage;
 
-    [Header("Blocker Properties")]
-    public float blockerVelocity;
-    public float blockerCooldown;
-
-    [Header("Destroyer Properties")]
-    public float destroyerVelocity;
-    public float destroyerCooldown;
+    [Header("Brain Properties")]
+    public float brainVelocity;
+    public float brainCooldown;
 
     [Header("Love Bomb Properties")]
     public float loveBombVelocity;
     public float loveBombCooldown;
 
-    private bool fireMode; // true is blocker, false is destroyer
-
     private bool loveBombCooldownIsActive;
 
-    private float lastBlockerFireTime;
-    private float lastDestroyerFireTime;
+    private float lastBrainFireTime;
     private float lastLoveBombFireTime;
 
 
     // Use this for initialization
     void Start()
     {
-
-        fireMode = true;
-
         Physics.IgnoreLayerCollision(8, 9);
 
         loveBombCooldownIsActive = true;
         lastLoveBombFireTime = Time.time;
-
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        /*if (Input.GetButtonDown("Fire2")) //change fire mode
-        {
-            ChangeMode();
-        }*/
-
         if (Input.GetButtonDown("Fire1")  || Input.GetKeyDown(KeyCode.Space)) //fire button
         {
-            FireLoveBomb();
+            FireBrain();
             
         }
-
-        /*if (Input.GetButtonDown("Fire3") || Input.GetButtonDown("Fire2")) //fire love bomb
+        if(Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.LeftShift))
         {
             FireLoveBomb();
-        }*/
+        }
 
         CooldownUI();
 
     }
 
-    void Fire()
+    void FireBrain()
     {
 
-        if (fireMode) //blocker mode
+        if (Time.time > lastBrainFireTime + brainCooldown)
         {
+            GameObject bullet = Instantiate(brainPrefab, bulletSpawn);
 
-            if (Time.time > lastBlockerFireTime + blockerCooldown)
-            {
-                GameObject bullet = (GameObject)Instantiate(blockerPrefab, bulletSpawn);
+            bullet.transform.parent = null;
 
-                bullet.transform.parent = null;
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, brainVelocity);
 
-                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, blockerVelocity);
+            lastBrainFireTime = Time.time;
 
-                lastBlockerFireTime = Time.time;
-
-                Destroy(bullet, 5f);
-            }
-
-        }
-        else // destroyer mode
-        {
-
-            if (Time.time > lastDestroyerFireTime + destroyerCooldown)
-            {
-                GameObject bullet = (GameObject)Instantiate(destroyerPrefab, bulletSpawn);
-
-                bullet.transform.parent = null;
-
-                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, destroyerVelocity);
-
-                lastDestroyerFireTime = Time.time;
-
-                Destroy(bullet, 5f);
-            }
-
+            Destroy(bullet, 5f);
         }
     }
 
@@ -118,7 +77,7 @@ public class FireScript : MonoBehaviour
 
             gameObject.GetComponent<AudioSource>().Play();
 
-            GameObject bullet = (GameObject)Instantiate(loveBombPrefab, bulletSpawn);
+            GameObject bullet = Instantiate(loveBombPrefab, bulletSpawn);
 
             bullet.transform.parent = null;
 
@@ -131,14 +90,8 @@ public class FireScript : MonoBehaviour
             coolDownImage.fillAmount = 1;
 
             Destroy(bullet, 10f);
-
         }
 
-    }
-
-    void ChangeMode()
-    {
-        fireMode = !fireMode;
     }
 
     void CooldownUI()
@@ -153,5 +106,4 @@ public class FireScript : MonoBehaviour
             loveBombCooldownIsActive = false;
         }
     }
-
 }
