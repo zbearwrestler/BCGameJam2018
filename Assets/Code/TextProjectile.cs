@@ -30,9 +30,13 @@ public class TextProjectile : MonoBehaviour {
 
     public void Initialize(Vector2 traj, int spawnerID, int line)
     {
+        //rotate
         mTrajectory = traj;
+        float angle = Vector2.SignedAngle(Vector2.right, mTrajectory);
+        if (angle > 90) { angle -= 180; }
+        else if (angle < -90) { angle += 180; }
 
-        transform.rotation = Quaternion.Euler(0,0,Vector2.SignedAngle(Vector2.right, mTrajectory));
+        transform.rotation = Quaternion.Euler(0,0,angle);
         spawnedBy = spawnerID;
         convoIndex = line;
         SetUpText();
@@ -67,10 +71,12 @@ public class TextProjectile : MonoBehaviour {
             {
                 ProjectileType = Type.Positive;
                 AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                GetComponent<Rigidbody2D>().angularVelocity = 0f;
             }
             else
             {
-                Destroy(collision.gameObject);
+                Destroy(gameObject);
             }
         }
     }

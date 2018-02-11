@@ -35,6 +35,10 @@ public class TalkingHead : MonoBehaviour
             {
                 Debug.Log("Lose!!!!!");
             }
+            if (mAnimator)
+            {
+                mAnimator.SetFloat("AngerLevel", Aggressiveness);
+            }
         }
     }
 
@@ -57,6 +61,7 @@ public class TalkingHead : MonoBehaviour
 
     //Private Variables
     private Vector2[] mSpawnDirections = new Vector2[3];
+    private Animator mAnimator;
     private float mInsultSpawnTimer = 0;
 
     private float mAggressiveness = 50f;
@@ -129,6 +134,7 @@ public class TalkingHead : MonoBehaviour
         {
             mSpawnDirections[i] = (SpawnPosition[i].position - CenterPosition[i].position).normalized;
         }
+        mAnimator = GetComponent<Animator>();
     }
 
     private void SpawnTextProjectile()
@@ -146,6 +152,12 @@ public class TalkingHead : MonoBehaviour
         //spawn
         GameObject spawnedObject = GameObject.Instantiate(prefabToSpawn, SpawnPosition[spawnLane].position, Quaternion.identity);
         spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirections[spawnLane], HeadID, 0);
+
+        //Trigger animation
+        if (mAnimator)
+        {
+            mAnimator.SetTrigger("Talk");
+        }
     }
 
     public void TriggerWaitToReply()
