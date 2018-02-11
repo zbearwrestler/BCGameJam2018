@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TalkingHead : MonoBehaviour
 {
-    //Public Variables
+    [Header("Head Propertys")]
     public int HeadID;
+    public int LinesDiologe = 1;
 
     [Header("Prefabs")]
     public GameObject AngryPrefab;
@@ -71,6 +72,7 @@ public class TalkingHead : MonoBehaviour
     private float mAggressiveness = 50f;
     private float mCommunicativeness = 50f;
     private List<Coroutine> replyCoroutines;
+    private int convoIndex;
 
     private float mIncrement = 3;
 
@@ -84,6 +86,11 @@ public class TalkingHead : MonoBehaviour
         {
             StartCoroutine(WaitAndReply(1));
         }
+    }
+
+    private void Start()
+    {
+        convoIndex = 0;
     }
 
     void Update()
@@ -158,7 +165,11 @@ public class TalkingHead : MonoBehaviour
 
         //spawn
         GameObject spawnedObject = GameObject.Instantiate(prefabToSpawn, SpawnPosition[spawnLane].position, Quaternion.identity);
-        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirections[spawnLane], HeadID, 0);
+        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirections[spawnLane], HeadID, convoIndex);
+
+        //increment spawn counter and loop it
+        convoIndex++;
+        if (convoIndex > LinesDiologe) { convoIndex = 0; }
 
         //Trigger animation
         if (mAnimator)
