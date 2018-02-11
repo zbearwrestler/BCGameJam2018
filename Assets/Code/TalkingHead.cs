@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TalkingHead : MonoBehaviour
 {
-    //Public Variables
+    [Header("Head Propertys")]
     public int HeadID;
+    public int LinesDiologe = 1;
 
     [Header("Prefabs")]
     public GameObject AngryPrefab;
@@ -33,11 +35,16 @@ public class TalkingHead : MonoBehaviour
         set
         {
             mAggressiveness = value;
-            if (mAggressiveness < 0) { mAggressiveness = 0; }
-            if (mAggressiveness > 100)
+            if (mAggressiveness <= 0) { //cap and check for game win
+                TalkingHeadManager.Instance.CheckForGameWin();
+                mAggressiveness = 0;
+            }
+            if (mAggressiveness > 100)//cap and game lose
             {
                 Aggressiveness = 100;
+                TalkingHeadManager.Instance.EndGame(HeadID, GameScore.EndResult.Anger);
                 Debug.Log("Lose!!!!!");
+                GoPostal();
             }
             if (mAnimator)
             {
@@ -55,11 +62,16 @@ public class TalkingHead : MonoBehaviour
         set
         {
             mCommunicativeness = value;
-            if (mCommunicativeness > 100) { mCommunicativeness = 100; }
-            if (mCommunicativeness < 0)
+            if (mCommunicativeness >= 100) { //cap and check for game win
+                TalkingHeadManager.Instance.CheckForGameWin();
+                mCommunicativeness = 100;
+            }
+            if (mCommunicativeness < 0) //cap and game lose
             {
                 Communicativeness = 0;
                 Debug.Log("Lose!!!!!");
+                TalkingHeadManager.Instance.EndGame(HeadID, GameScore.EndResult.NotTalking);
+                GoPostal();
             }
         }
     }
@@ -71,8 +83,10 @@ public class TalkingHead : MonoBehaviour
     private float mAggressiveness = 50f;
     private float mCommunicativeness = 50f;
     private List<Coroutine> replyCoroutines;
+    private int convoIndex;
 
     private float mIncrement = 3;
+    private bool m_IsRanting = false;
 
     //--------------------------------------------------
     //Unity Functions
@@ -84,6 +98,11 @@ public class TalkingHead : MonoBehaviour
         {
             StartCoroutine(WaitAndReply(1));
         }
+    }
+
+    private void Start()
+    {
+        convoIndex = 0;
     }
 
     void Update()
@@ -156,9 +175,16 @@ public class TalkingHead : MonoBehaviour
 
         int spawnLane = Random.Range(0, 3);
 
+        //set direction
+        Vector2 dir = AddSpreadToVector(mSpawnDirections[spawnLane], 0.1f);
+
         //spawn
         GameObject spawnedObject = GameObject.Instantiate(prefabToSpawn, SpawnPosition[spawnLane].position, Quaternion.identity);
-        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirections[spawnLane], HeadID, 0);
+        spawnedObject.GetComponent<TextProjectile>().Initialize(dir, HeadID, convoIndex);
+
+        //increment spawn counter and loop it
+        convoIndex++;
+        if (convoIndex > LinesDiologe) { convoIndex = 0; }
 
         //Trigger animation
         if (mAnimator)
@@ -208,5 +234,38 @@ public class TalkingHead : MonoBehaviour
         //remove this coroutine from list
 
     }
+
+
+    private void GoPostal()
+    {
+        if (!m_IsRanting)
+        {
+            m_IsRanting = true;
+            Aggressiveness = 100;
+            Communicativeness = 0;
+            StartCoroutine(Rant(3, 0.1f));
+        }
+    }
+
+    IEnumerator Rant(float rantTime, float rate)
+    {
+        float timer = 0;
+        while (timer < rantTime)
+        {
+            yield return new WaitForSeconds(rate);
+            SpawnTextProjectile();
+        }
+        m_IsRanting = false;
+    }
+
+    private Vector2 AddSpreadToVector(Vector2 vect, float spread)
+    {
+        Vector2 newVect = new Vector2(vect.x + Random.Range(-spread, spread), vect.y + (Random.Range(-spread, spread)));
+        newVect.Normalize();
+        Debug.Log(vect + "=>" + newVect);
+        return newVect;
+    }
+
+
 
 }

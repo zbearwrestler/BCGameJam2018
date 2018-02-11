@@ -8,15 +8,18 @@ public class FireScript : MonoBehaviour
     [Header("Prefabs")]
     public GameObject brainPrefab;
     public GameObject loveBombPrefab;
-    public Transform bulletSpawn;
     public Image coolDownImage;
+
+    [Header("Spawns")]
+    public Transform bulletSpawn;
+    public Transform loveBombSpawn;
+
 
     [Header("Brain Properties")]
     public float brainVelocity;
     public float brainCooldown;
 
     [Header("Love Bomb Properties")]
-    public float loveBombVelocity;
     public float loveBombCooldown;
 
     private bool loveBombCooldownIsActive;
@@ -38,12 +41,12 @@ public class FireScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire1")  || Input.GetKeyDown(KeyCode.Space)) //fire button
+        if (Input.GetButton("Fire1")  || Input.GetKey(KeyCode.Space)) //fire button
         {
             FireBrain();
             
         }
-        if(Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetButtonDown("Fire2") || Input.GetKey(KeyCode.LeftShift))
         {
             FireLoveBomb();
         }
@@ -77,20 +80,17 @@ public class FireScript : MonoBehaviour
         if (Time.time > lastLoveBombFireTime + loveBombCooldown)
         {
 
+            GameObject bomb = Instantiate(loveBombPrefab, loveBombSpawn);
 
-            GameObject bullet = Instantiate(loveBombPrefab, bulletSpawn);
+            bomb.GetComponent<LoveBomb>().Begin();
 
-            bullet.transform.parent = null;
-
-            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, loveBombVelocity);
+            bomb.transform.parent = null;
 
             lastLoveBombFireTime = Time.time;
 
             loveBombCooldownIsActive = true;
 
             coolDownImage.fillAmount = 1;
-
-            Destroy(bullet, 10f);
         }
 
     }

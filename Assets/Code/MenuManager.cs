@@ -16,6 +16,21 @@ public class MenuManager : MonoBehaviour {
 
     }
 
+    public void FindMediatorLink()
+    {
+        Application.OpenURL("mediatebc.com/ConflictManagement");
+    }
+
+    public void MediatorTrainingLink()
+    {
+        Application.OpenURL("https://www.crisisprevention.com/Specialties/Nonviolent-Crisis-Intervention");
+    }
+
+    public void MoreInformationLink()
+    {
+        Application.OpenURL("http://www.edcc.edu/counseling/documents/Conflict.pdf");
+    }
+
     public void QuitGame()
     {
 #if UNITY_EDITOR
