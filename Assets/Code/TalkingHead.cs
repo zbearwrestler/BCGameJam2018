@@ -15,6 +15,11 @@ public class TalkingHead : MonoBehaviour
     public Transform[] SpawnPosition;
     public Transform[] CenterPosition;
 
+    public List<Coroutine> replyCoroutines;
+
+    public bool IsStarter;
+
+    public TalkingHead target;
 
     public float Aggressiveness
     {
@@ -63,16 +68,20 @@ public class TalkingHead : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(8, 8, true);
         Init();
+        if (IsStarter)
+        {
+            StartCoroutine(WaitAndReply(1));
+        }
     }
 
     void Update()
     {
-        mInsultSpawnTimer += Time.deltaTime * SpawnSpeed;
-        if (mInsultSpawnTimer >= 10)
-        {
-            mInsultSpawnTimer = 0;
-            SpawnTextProjectile();
-        }
+        //mInsultSpawnTimer += Time.deltaTime * SpawnSpeed;
+        //if (mInsultSpawnTimer >= 10)
+        //{
+        //    mInsultSpawnTimer = 0;
+        //    SpawnTextProjectile();
+        //}
 
     }
 
@@ -137,6 +146,24 @@ public class TalkingHead : MonoBehaviour
         //spawn
         GameObject spawnedObject = GameObject.Instantiate(prefabToSpawn, SpawnPosition[spawnLane].position, Quaternion.identity);
         spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirections[spawnLane], HeadID, 0);
+    }
+
+    public void TriggerWaitToReply()
+    {
+        float time = 1f; //calculate time
+        StartCoroutine(WaitAndReply(time));
+    }
+
+    private IEnumerator WaitAndReply(float time)
+    {
+        //wait
+        yield return new WaitForSeconds(time);
+        //spawn own projectile
+        SpawnTextProjectile();
+        //trigger other head to wait and reply
+        target.TriggerWaitToReply();
+        //remove this coroutine from list
+
     }
 
 }
