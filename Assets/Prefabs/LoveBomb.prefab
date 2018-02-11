@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Agresivnessreduction: 20
-  ParticleEffect: {fileID: 1551041171099414, guid: 7708e67c71958e94aa79e74e1ef2f028,
+  ParticleEffect: {fileID: 1491967912092366, guid: 7f2064c1ccee38749bba208aaa5fcfb4,
     type: 2}
   ParticleLifeTime: 2
 --- !u!212 &212703051990982816

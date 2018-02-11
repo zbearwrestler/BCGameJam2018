@@ -15,12 +15,11 @@ public class LoveBomb : MonoBehaviour {
 
     public IEnumerator Explode()
     {
-        Debug.Log("Runing");
+        AudioManager.Play("LoveBomb");
         Animation animation  = gameObject.GetComponent<Animation>();
         animation.Play();
         yield return new WaitForSeconds(animation.clip.length);
-        GameObject paricale = GameObject.Instantiate(ParticleEffect, gameObject.transform);
-        paricale.transform.parent = null;
+        GameObject paricale = GameObject.Instantiate(ParticleEffect, gameObject.transform.position, Quaternion.identity);
         paricale.GetComponent<ParticleSystem>().Play();
         Destroy(paricale, ParticleLifeTime);
         foreach (GameObject Head in GameObject.FindGameObjectsWithTag("TalkingHead"))
