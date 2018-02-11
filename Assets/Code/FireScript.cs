@@ -44,20 +44,21 @@ public class FireScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire2")) //change fire mode
+        /*if (Input.GetButtonDown("Fire2")) //change fire mode
         {
             ChangeMode();
-        }
+        }*/
 
         if (Input.GetButtonDown("Fire1")) //fire button
         {
-            Fire();
+            FireLoveBomb();
+            gameObject.GetComponent<AudioSource>().Play();
         }
 
-        if (Input.GetButtonDown("Fire3")) //fire love bomb
+        /*if (Input.GetButtonDown("Fire3") || Input.GetButtonDown("Fire2")) //fire love bomb
         {
             FireLoveBomb();
-        }
+        }*/
 
     }
 
