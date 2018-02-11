@@ -35,12 +35,16 @@ public class TalkingHead : MonoBehaviour
         set
         {
             mAggressiveness = value;
-            if (mAggressiveness < 0) { mAggressiveness = 0; }
-            if (mAggressiveness > 100)
+            if (mAggressiveness <= 0) { //cap and check for game win
+                TalkingHeadManager.Instance.CheckForGameWin();
+                mAggressiveness = 0;
+            }
+            if (mAggressiveness > 100)//cap and game lose
             {
                 Aggressiveness = 100;
-                EndGame(GameScore.EndResult.Anger);
+                TalkingHeadManager.Instance.EndGame(HeadID, GameScore.EndResult.Anger);
                 Debug.Log("Lose!!!!!");
+                GoPostal();
             }
             if (mAnimator)
             {
@@ -58,12 +62,16 @@ public class TalkingHead : MonoBehaviour
         set
         {
             mCommunicativeness = value;
-            if (mCommunicativeness > 100) { mCommunicativeness = 100; }
-            if (mCommunicativeness < 0)
+            if (mCommunicativeness >= 100) { //cap and check for game win
+                TalkingHeadManager.Instance.CheckForGameWin();
+                mCommunicativeness = 100;
+            }
+            if (mCommunicativeness < 0) //cap and game lose
             {
                 Communicativeness = 0;
                 Debug.Log("Lose!!!!!");
-                EndGame(GameScore.EndResult.NotTalking);
+                TalkingHeadManager.Instance.EndGame(HeadID, GameScore.EndResult.NotTalking);
+                GoPostal();
             }
         }
     }
@@ -78,6 +86,7 @@ public class TalkingHead : MonoBehaviour
     private int convoIndex;
 
     private float mIncrement = 3;
+    private bool m_IsRanting = false;
 
     //--------------------------------------------------
     //Unity Functions
@@ -166,9 +175,12 @@ public class TalkingHead : MonoBehaviour
 
         int spawnLane = Random.Range(0, 3);
 
+        //set direction
+        Vector2 dir = AddSpreadToVector(mSpawnDirections[spawnLane], 0.1f);
+
         //spawn
         GameObject spawnedObject = GameObject.Instantiate(prefabToSpawn, SpawnPosition[spawnLane].position, Quaternion.identity);
-        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirections[spawnLane], HeadID, convoIndex);
+        spawnedObject.GetComponent<TextProjectile>().Initialize(dir, HeadID, convoIndex);
 
         //increment spawn counter and loop it
         convoIndex++;
@@ -224,11 +236,36 @@ public class TalkingHead : MonoBehaviour
     }
 
 
-    private void EndGame(GameScore.EndResult result)
+    private void GoPostal()
     {
-        GameScore.Instance.Save(Time.timeSinceLevelLoad, HeadID, result);
-        //TODO delay
-        SceneManager.LoadScene("EndScreen");
+        if (!m_IsRanting)
+        {
+            m_IsRanting = true;
+            Aggressiveness = 100;
+            Communicativeness = 0;
+            StartCoroutine(Rant(3, 0.1f));
+        }
     }
+
+    IEnumerator Rant(float rantTime, float rate)
+    {
+        float timer = 0;
+        while (timer < rantTime)
+        {
+            yield return new WaitForSeconds(rate);
+            SpawnTextProjectile();
+        }
+        m_IsRanting = false;
+    }
+
+    private Vector2 AddSpreadToVector(Vector2 vect, float spread)
+    {
+        Vector2 newVect = new Vector2(vect.x + Random.Range(-spread, spread), vect.y + (Random.Range(-spread, spread)));
+        newVect.Normalize();
+        Debug.Log(vect + "=>" + newVect);
+        return newVect;
+    }
+
+
 
 }

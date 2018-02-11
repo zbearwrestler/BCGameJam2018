@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class GameScore : MonoBehaviour {
     public enum EndResult { Anger, NotTalking, Win}
-    private float time;
-    private int winnerID;
-    private EndResult result;
+    [SerializeField]private float time;
+    [SerializeField] private int winnerID;
+    [SerializeField] private EndResult result;
 
 
-    public int Time
+    public float Time
     {
-        get{ return (int)time; }
+        get{ return time; }
     }
 
     public int WinnerID { get { return winnerID; } }
@@ -28,6 +28,7 @@ public class GameScore : MonoBehaviour {
             else
             {
                 m_Instance = new GameObject().AddComponent<GameScore>();
+                DontDestroyOnLoad(m_Instance.gameObject);
                 return m_Instance;
             }
             
@@ -52,9 +53,10 @@ public class GameScore : MonoBehaviour {
     //----------------------------------------------------------------------------------------------------
     public void Save(float t, int winner, EndResult res)
     {
-        Instance.time = time;
-        Instance.winnerID = winner;
-        Instance.result = res;
+        Debug.Log("Save: " + winner + " " + res.ToString() + " in time " + t);
+        time = t;
+        winnerID = winner;
+        result = res;
     }
 
     public string GetResultString()

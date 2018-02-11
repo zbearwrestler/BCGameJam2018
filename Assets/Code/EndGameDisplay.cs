@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndGameDisplay : MonoBehaviour {
     public Text displayText;
@@ -19,7 +20,7 @@ public class EndGameDisplay : MonoBehaviour {
     private string[] violenceStrings =
     {
         "grabbed an axe.",
-        "started a riot.",
+        "started suplexed you through a table.",
         "punched you in the face.",
         "flew into a bloody rage.",
         "went postal.",
@@ -39,9 +40,10 @@ public class EndGameDisplay : MonoBehaviour {
         "slapped his hands over his ears."
     };
 
-    private void Awake()
+    private void Start()
     {
         //set up first part
+        Debug.Log(GameScore.Instance.Time);
         messageString = "You " + actionStrings[Random.Range(0, 6)]
             + " for " + GameScore.Instance.Time + " seconds until ";
         switch (GameScore.Instance.Result)
@@ -66,6 +68,9 @@ public class EndGameDisplay : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+		if (Input.anyKeyDown)
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
 	}
 }
