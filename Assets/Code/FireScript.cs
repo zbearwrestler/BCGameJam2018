@@ -8,7 +8,6 @@ public class FireScript : MonoBehaviour
     [Header("Prefabs")]
     public GameObject brainPrefab;
     public GameObject loveBombPrefab;
-    public Transform bulletSpawn;
     public Image coolDownImage;
 
     [Header("Spawns")]
@@ -82,7 +81,7 @@ public class FireScript : MonoBehaviour
         if (Time.time > lastLoveBombFireTime + loveBombCooldown)
         {
 
-	    AudioManager.Play("LoveBomb");
+	        AudioManager.Play("LoveBomb");
             GameObject bomb = Instantiate(loveBombPrefab, loveBombSpawn);
 
             bomb.GetComponent<LoveBomb>().Begin();
