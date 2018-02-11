@@ -188,6 +188,9 @@ MonoBehaviour:
   ProjectileType: 0
   Speed: 0.05
   AttachedTextMesh: {fileID: 102060016681772744}
+  positiveSprite: {fileID: 21300000, guid: 72b90f3b614b6954fb4fdbfcae9e09a8, type: 3}
+  particlePrefab: {fileID: 1091101769183286, guid: 85f2b6acae4033d42b011b29fdce3b5a,
+    type: 2}
 --- !u!212 &212222755107094654
 SpriteRenderer:
   m_ObjectHideFlags: 1

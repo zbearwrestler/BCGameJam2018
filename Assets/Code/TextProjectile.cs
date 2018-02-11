@@ -22,6 +22,8 @@ public class TextProjectile : MonoBehaviour {
 
     public Sprite positiveSprite;
 
+    public GameObject particlePrefab;
+
     private SpriteRenderer mSpriteRenderer;
 
     public int SpawnedBy
@@ -84,6 +86,7 @@ public class TextProjectile : MonoBehaviour {
                 if (ProjectileType == Type.PassAggressive)
                 {
                     AudioManager.Play("Bloop");
+                    SpawnDestroyedParticles();
                 }
                 ProjectileType = Type.Positive;
                 AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
@@ -100,6 +103,7 @@ public class TextProjectile : MonoBehaviour {
                     TalkingHeadManager.Instance.NotifyWasInterrupted(SpawnedBy);
                     
                 }
+                SpawnDestroyedParticles();
                 Destroy(gameObject);
                 AudioManager.Play("BrainSlat");
             }
@@ -126,6 +130,12 @@ public class TextProjectile : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+    private void SpawnDestroyedParticles()
+    {
+        GameObject particleSpawned = GameObject.Instantiate(particlePrefab, transform.position, Quaternion.identity);
+        Destroy(particleSpawned, 1f);
     }
 
 
