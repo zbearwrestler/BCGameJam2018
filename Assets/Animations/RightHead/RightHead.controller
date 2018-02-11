@@ -14,32 +14,8 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: BecomeHappy
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: BecomeNeutrual
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: BecomeUltraHappy
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: BecomeAngery
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: BecomeTickedOff
-    m_Type: 9
+  - m_Name: AngerLevel
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -64,9 +40,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: BecomeTickedOff
-    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: AngerLevel
+    m_EventTreshold: 40
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102123853438099378}
   m_Solo: 0
@@ -88,9 +64,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: BecomeAngery
-    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: AngerLevel
+    m_EventTreshold: 80
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102597649880390178}
   m_Solo: 0
@@ -112,9 +88,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: BecomeHappy
-    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: AngerLevel
+    m_EventTreshold: 7
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102865051234054786}
   m_Solo: 0
@@ -184,9 +160,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: BecomeTickedOff
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: AngerLevel
+    m_EventTreshold: 70
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102123853438099378}
   m_Solo: 0
@@ -250,9 +226,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: BecomeUltraHappy
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: AngerLevel
+    m_EventTreshold: 5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102698637801858800}
   m_Solo: 0
@@ -295,9 +271,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: BecomeHappy
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: AngerLevel
+    m_EventTreshold: 15
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102865051234054786}
   m_Solo: 0
@@ -319,9 +295,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: BecomeNeutrual
-    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: AngerLevel
+    m_EventTreshold: 20
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102501479250823014}
   m_Solo: 0
@@ -367,9 +343,9 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: BecomeNeutrual
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: AngerLevel
+    m_EventTreshold: 30
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102501479250823014}
   m_Solo: 0
