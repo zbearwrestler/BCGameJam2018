@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
+    public string sceneName = "Test_TalkingHeads";
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Test_TalkingHeads", LoadSceneMode.Single);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
     public void TangentialLearning()
