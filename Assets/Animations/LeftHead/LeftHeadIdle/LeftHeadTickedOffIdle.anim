@@ -39,7 +39,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: HeadSprite
+    path: Head
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
@@ -48,7 +48,7 @@ AnimationClip:
     - time: 2
       value: {fileID: 21300000, guid: cbcf877cd21df3b45a1ef2556ddebc89, type: 3}
     attribute: m_Sprite
-    path: HeadSprite
+    path: Head
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -59,14 +59,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2564294673
+      path: 130111906
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2564294673
+      path: 130111906
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -121,7 +121,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: HeadSprite
+    path: Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -149,7 +149,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: HeadSprite
+    path: Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -177,7 +177,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: HeadSprite
+    path: Head
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []
