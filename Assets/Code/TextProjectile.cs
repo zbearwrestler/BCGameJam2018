@@ -25,12 +25,14 @@ public class TextProjectile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        gameObject.transform.Translate(mTrajectory * Speed * Time.timeScale);
+        gameObject.transform.Translate(mTrajectory * Speed * Time.timeScale, Space.World);
 	}
 
     public void Initialize(Vector2 traj, int spawnerID, int line)
     {
         mTrajectory = traj;
+
+        transform.rotation = Quaternion.Euler(0,0,Vector2.SignedAngle(Vector2.right, mTrajectory));
         spawnedBy = spawnerID;
         convoIndex = line;
         SetUpText();
