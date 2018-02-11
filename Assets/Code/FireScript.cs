@@ -60,8 +60,7 @@ public class FireScript : MonoBehaviour
 
         if (Time.time > lastBrainFireTime + brainCooldown)
         {
-            gameObject.GetComponent<AudioSource>().Play();
-
+            AudioManager.Play("BrainShot");
             GameObject bullet = Instantiate(brainPrefab, bulletSpawn);
 
             bullet.transform.parent = null;
