@@ -113,48 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &51069633
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4436462823540576, guid: 9f996d961c6a39b4cafdaca5e330d265, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4436462823540576, guid: 9f996d961c6a39b4cafdaca5e330d265, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4436462823540576, guid: 9f996d961c6a39b4cafdaca5e330d265, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4436462823540576, guid: 9f996d961c6a39b4cafdaca5e330d265, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4436462823540576, guid: 9f996d961c6a39b4cafdaca5e330d265, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4436462823540576, guid: 9f996d961c6a39b4cafdaca5e330d265, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4436462823540576, guid: 9f996d961c6a39b4cafdaca5e330d265, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4436462823540576, guid: 9f996d961c6a39b4cafdaca5e330d265, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9f996d961c6a39b4cafdaca5e330d265, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &89238581
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,7 +796,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2cb86a36a7719444c964fe82a3fc8890, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6bcdfd637adcf9e4a829f11dbe8d3cfd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -923,7 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brainPrefab: {fileID: 1806474902064818, guid: 9f996d961c6a39b4cafdaca5e330d265,
     type: 2}
-  loveBombPrefab: {fileID: 1036604334225516, guid: 10dd12679f7e4e94d9294172d4b64910,
+  loveBombPrefab: {fileID: 1295076331952162, guid: 10dd12679f7e4e94d9294172d4b64910,
     type: 2}
   bulletSpawn: {fileID: 862777459}
   coolDownImage: {fileID: 897469588}
@@ -963,8 +921,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: 1.4, y: 1.3}
+  m_SizeDelta: {x: 217.4, y: 202.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &897469588
 MonoBehaviour:
@@ -1026,7 +984,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeadID: 1
-  SpawnSpeed: 5
   AngryPrefab: {fileID: 1956700730340334, guid: 82825cb2d6534674e91e699739e6a014,
     type: 2}
   NeutralPrefab: {fileID: 1956700730340334, guid: 552bda6eb0122974d9c1b8c791f4c793,
@@ -1041,6 +998,8 @@ MonoBehaviour:
   - {fileID: 2040375016}
   - {fileID: 1236726140}
   - {fileID: 559928847}
+  FastestSpawnRate: 0.5
+  SlowestSpawnRate: 1.5
   IsStarter: 0
   target: {fileID: 1498214973}
 --- !u!1 &1186133591
@@ -1537,7 +1496,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeadID: 0
-  SpawnSpeed: 5
   AngryPrefab: {fileID: 1956700730340334, guid: 82825cb2d6534674e91e699739e6a014,
     type: 2}
   NeutralPrefab: {fileID: 1956700730340334, guid: 552bda6eb0122974d9c1b8c791f4c793,
@@ -1552,6 +1510,8 @@ MonoBehaviour:
   - {fileID: 1037806321}
   - {fileID: 2123560176}
   - {fileID: 1742658134}
+  FastestSpawnRate: 0.5
+  SlowestSpawnRate: 1.5
   IsStarter: 1
   target: {fileID: 1074596040}
 --- !u!1 &1503446007
@@ -1647,8 +1607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -301, y: -146}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -810.3, y: -405.5}
+  m_SizeDelta: {x: 171.5, y: 151.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646639529
 MonoBehaviour:
