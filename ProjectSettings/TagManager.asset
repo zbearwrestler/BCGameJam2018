@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyProjectile
   - PlayerBullet
+  - TalkingHead
   layers:
   - Default
   - TransparentFX
