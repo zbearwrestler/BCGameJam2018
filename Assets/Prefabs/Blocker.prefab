@@ -19,18 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4693395804948412}
-<<<<<<< HEAD
-  - component: {fileID: 50633654411829310}
-  - component: {fileID: 61242220250136518}
-  - component: {fileID: 212882796570771630}
-  m_Layer: 10
-=======
   - component: {fileID: 33783480904526716}
   - component: {fileID: 23454100711044642}
   - component: {fileID: 50734735523305938}
   - component: {fileID: 61034030488573238}
   m_Layer: 9
->>>>>>> ConflictDiamond
   m_Name: Blocker
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -129,18 +122,6 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
-  m_Sprite: {fileID: 21300000, guid: a2a5df0bbb4b7154e80686b498c09bd5, type: 3}
-  m_Color: {r: 1, g: 0.46323532, b: 0.94077075, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-=======
 --- !u!33 &33783480904526716
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -193,4 +174,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
->>>>>>> ConflictDiamond

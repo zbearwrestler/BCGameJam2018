@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ConflictDiamond : MonoBehaviour {
-
-    public GameObject head;
     
     private TalkingHead talkingHead;
 
@@ -21,9 +19,9 @@ public class ConflictDiamond : MonoBehaviour {
     public Transform canvas;
 
     // Use this for initialization
-    void Start () {
-
-        talkingHead = head.GetComponent<TalkingHead>();
+    void Start ()
+    {
+        talkingHead = gameObject.GetComponent<TalkingHead>();
 
         xInitial = position.transform.position.x;
         yInitial = position.transform.position.y;
@@ -39,6 +37,5 @@ public class ConflictDiamond : MonoBehaviour {
         yPos = yInitial + talkingHead.Aggressiveness - MAX_DISTANCE;
 
         position.transform.position = new Vector2(xPos, yPos);
-        
 	}
 }

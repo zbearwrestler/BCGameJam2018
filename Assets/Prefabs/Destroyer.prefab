@@ -19,18 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4484328268153062}
-<<<<<<< HEAD
-  - component: {fileID: 212042568991082398}
-  - component: {fileID: 58252712871296128}
-  - component: {fileID: 50961383337468204}
-  m_Layer: 10
-=======
   - component: {fileID: 33574462775608742}
   - component: {fileID: 23747626418396618}
   - component: {fileID: 50595391079056798}
   - component: {fileID: 58382311278411438}
   m_Layer: 9
->>>>>>> ConflictDiamond
   m_Name: Destroyer
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -119,18 +112,6 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< HEAD
-  m_Sprite: {fileID: 21300000, guid: 7de37b00b1d80ed43a8da58b15254082, type: 3}
-  m_Color: {r: 0.7900608, g: 0.6691177, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-=======
 --- !u!33 &33574462775608742
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -173,4 +154,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
->>>>>>> ConflictDiamond
