@@ -18,10 +18,10 @@ public class ArgumentText : MonoBehaviour{
     //--------------------------------------------------
     //Unity Stuff
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
+    //private void Awake()
+    //{
+        //DontDestroyOnLoad(this);
+    //}
 
     private static void OnSeanLoad(Scene scene, LoadSceneMode mode)
     {

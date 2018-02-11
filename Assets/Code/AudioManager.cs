@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class AudioManager : MonoBehaviour {
-
+    [Range(0f,1f)] public float volumeMultiplier;
     [System.Serializable]
     public struct Effect
     {
@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour {
         DontDestroyOnLoad(this);
     }
 
-    public void mPlay(string effectName)
+    private void mPlay(string effectName)
     {
         for (int i = 0; i < Effects.Length; ++i)
         {
@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour {
             {
                 instance = GameObject.FindObjectOfType<AudioManager>();
                 if (instance == null)
-                    Debug.LogError("no AudioManager in scean");   
+                    Debug.LogError("no AudioManager in scene");   
             }
             return instance;
         }

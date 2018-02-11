@@ -20,6 +20,7 @@ public class FireScript : MonoBehaviour
     public float brainCooldown;
 
     [Header("Love Bomb Properties")]
+    public float loveBombVelocity;
     public float loveBombCooldown;
 
     private bool loveBombCooldownIsActive;
@@ -60,6 +61,7 @@ public class FireScript : MonoBehaviour
 
         if (Time.time > lastBrainFireTime + brainCooldown)
         {
+            //gameObject.GetComponent<AudioSource>().Play();
             AudioManager.Play("BrainShot");
             GameObject bullet = Instantiate(brainPrefab, bulletSpawn);
 
@@ -79,6 +81,7 @@ public class FireScript : MonoBehaviour
         if (Time.time > lastLoveBombFireTime + loveBombCooldown)
         {
 
+	        AudioManager.Play("LoveBomb");
             GameObject bomb = Instantiate(loveBombPrefab, loveBombSpawn);
 
             bomb.GetComponent<LoveBomb>().Begin();

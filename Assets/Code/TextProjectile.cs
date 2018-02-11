@@ -20,6 +20,8 @@ public class TextProjectile : MonoBehaviour {
     private Color neutralColor = new Color(0.5f, 0.5f, 0.5f);
     private Color positiveColor = new Color(0f,0.578f,1f);
 
+    public Sprite positiveSprite;
+
     private SpriteRenderer mSpriteRenderer;
 
     public int SpawnedBy
@@ -49,7 +51,7 @@ public class TextProjectile : MonoBehaviour {
         spawnedBy = spawnerID;
         convoIndex = line;
         SetUpText();
-        SetColor();
+        //SetColor();
     }
 
     private void SetUpText()
@@ -79,6 +81,10 @@ public class TextProjectile : MonoBehaviour {
 
             if (ProjectileType == Type.Positive || ProjectileType == Type.PassAggressive)
             {
+                if (ProjectileType == Type.PassAggressive)
+                {
+                    AudioManager.Play("Bloop");
+                }
                 ProjectileType = Type.Positive;
                 AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -90,9 +96,12 @@ public class TextProjectile : MonoBehaviour {
                 if (ProjectileType == Type.Neutral)
                 {
                     //shot down neutral - notify talking head
+                    AudioManager.Play("SHH");
                     TalkingHeadManager.Instance.NotifyWasInterrupted(SpawnedBy);
+                    
                 }
                 Destroy(gameObject);
+                AudioManager.Play("BrainSlat");
             }
         }
     }
@@ -112,6 +121,7 @@ public class TextProjectile : MonoBehaviour {
                 break;
             case Type.Positive:
                 mSpriteRenderer.color = positiveColor;
+                GetComponent<SpriteRenderer>().sprite = positiveSprite;
                 break;
             default:
                 break;

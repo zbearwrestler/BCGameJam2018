@@ -7,7 +7,7 @@ public class TalkingHead : MonoBehaviour
 {
     [Header("Head Propertys")]
     public int HeadID;
-    public int LinesDiologe = 1;
+    public int LinesDialogue = 1;
 
     [Header("Prefabs")]
     public GameObject AngryPrefab;
@@ -19,6 +19,26 @@ public class TalkingHead : MonoBehaviour
     public Transform[] CenterPosition;
     public float FastestSpawnRate = 0.5f;
     public float SlowestSpawnRate = 1.5f;
+    public float DirectionSpread = 0.1f;
+
+    [Header("Projectile Interactions")]
+    public float Collide_Angry_Aggro = 6; //++
+    public float Collide_Angry_Comm = 0; //0
+
+    public float Collide_PassAgg_Aggro = 3; //+
+    public float Collide_PassAgg_Comm = -3; //+
+
+    public float Collide_Neutral_Aggro = 0; //0
+    public float Collide_Neutral_Comm = 1.5f; //+
+
+    public float Destroy_Neutral_Aggro = 6; //++
+    public float Destroy_Neutral_Comm = -6; //--
+
+    public float Collide_Positive_Aggro = -3; //-
+    public float Collide_Positive_Comm = 3; //+
+
+    public float IncrementMultiplier = 1.0f;
+
 
 
     [Header("Other")]
@@ -85,7 +105,6 @@ public class TalkingHead : MonoBehaviour
     private List<Coroutine> replyCoroutines;
     private int convoIndex;
 
-    private float mIncrement = 3;
     private bool m_IsRanting = false;
 
     //--------------------------------------------------
@@ -128,18 +147,29 @@ public class TalkingHead : MonoBehaviour
                 switch (textProj.ProjectileType)
                 {
                     case TextProjectile.Type.Angry:
-                        Aggressiveness += 2*mIncrement;
+                        //Aggressiveness += 2*mIncrement;
+                        Aggressiveness += (Collide_Angry_Aggro*IncrementMultiplier);
+                        Communicativeness += (Collide_Angry_Comm * IncrementMultiplier);
+                        //AudioManager.Play("ThroatClear");
                         break;
                     case TextProjectile.Type.PassAggressive:
-                        Aggressiveness += mIncrement;
-                        Communicativeness -= mIncrement;
+                        //Aggressiveness += mIncrement;
+                        //Communicativeness -= mIncrement;
+                        Aggressiveness += (Collide_PassAgg_Aggro * IncrementMultiplier);
+                        Communicativeness += (Collide_PassAgg_Comm * IncrementMultiplier);
+                        //AudioManager.Play("ThroatClear");
                         break;
                     case TextProjectile.Type.Neutral:
-                        Communicativeness += mIncrement/2f;
+                        //Communicativeness += mIncrement/2f;
+                        Aggressiveness += (Collide_Neutral_Aggro * IncrementMultiplier);
+                        Communicativeness += (Collide_Neutral_Comm * IncrementMultiplier);
+                        //AudioManager.Play("ThroatClear");
                         break;
                     case TextProjectile.Type.Positive:
-                        Communicativeness += mIncrement;
-                        Aggressiveness -= mIncrement;
+                        //Communicativeness += mIncrement;
+                        //Aggressiveness -= mIncrement;
+                        Aggressiveness += (Collide_Positive_Aggro * IncrementMultiplier);
+                        Communicativeness += (Collide_Positive_Comm * IncrementMultiplier);
                         break;
                     default:
                         break;
@@ -176,7 +206,7 @@ public class TalkingHead : MonoBehaviour
         int spawnLane = Random.Range(0, 3);
 
         //set direction
-        Vector2 dir = AddSpreadToVector(mSpawnDirections[spawnLane], 0.1f);
+        Vector2 dir = AddSpreadToVector(mSpawnDirections[spawnLane],DirectionSpread);
 
         //spawn
         GameObject spawnedObject = GameObject.Instantiate(prefabToSpawn, SpawnPosition[spawnLane].position, Quaternion.identity);
@@ -184,13 +214,16 @@ public class TalkingHead : MonoBehaviour
 
         //increment spawn counter and loop it
         convoIndex++;
-        if (convoIndex > LinesDiologe) { convoIndex = 0; }
+        if (convoIndex > LinesDialogue) { convoIndex = 0; }
 
         //Trigger animation
         if (mAnimator)
         {
             mAnimator.SetTrigger("Talk");
         }
+
+        //play sound effect
+        AudioManager.Play((HeadID == 1) ? "JibberishHead1Negative" : "JibberishHead0Negative");
     }
 
     public void TriggerWaitToReply()
@@ -210,8 +243,8 @@ public class TalkingHead : MonoBehaviour
     {
         //someone shot down your neutral statement. What meanies!
         //Debug.Log("Shot down!");
-        Communicativeness -= 2*mIncrement;
-        Aggressiveness += 2*mIncrement;
+        Communicativeness += (Destroy_Neutral_Comm * IncrementMultiplier);
+        Aggressiveness += (Destroy_Neutral_Aggro * IncrementMultiplier);
     }
 
     public void StopShooting()
@@ -262,7 +295,7 @@ public class TalkingHead : MonoBehaviour
     {
         Vector2 newVect = new Vector2(vect.x + Random.Range(-spread, spread), vect.y + (Random.Range(-spread, spread)));
         newVect.Normalize();
-        Debug.Log(vect + "=>" + newVect);
+        //Debug.Log(vect + "=>" + newVect);
         return newVect;
     }
 

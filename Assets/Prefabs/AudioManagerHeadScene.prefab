@@ -51,9 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c4aa15639118840973adabd0e644f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeMultiplier: 0
   Effects:
   - Name: BrainShot
-    Volume: 0.86
+    Volume: 0.3
     audioClips:
     - {fileID: 8300000, guid: 1ffe76ceda3b8794e8b1e9d2d20a25ff, type: 3}
     - {fileID: 8300000, guid: 5ea46051f0f8e534690bd9b4bf5fb874, type: 3}
@@ -77,7 +78,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a72cf1266bc31d744a161cbab138fbdc, type: 3}
     - {fileID: 8300000, guid: 6bcdfd637adcf9e4a829f11dbe8d3cfd, type: 3}
   - Name: JibberishHead0Negative
-    Volume: 0.86
+    Volume: 0.5
     audioClips:
     - {fileID: 8300000, guid: e9d69908e46ab6e43b1113f3407e3683, type: 3}
     - {fileID: 8300000, guid: b936e1d34507542408c368f1eceabac0, type: 3}
@@ -90,7 +91,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: e0fcc19d322f2b84d914cf18e3f3948c, type: 3}
     - {fileID: 8300000, guid: a64170856c268e947b97e1d2e655baaa, type: 3}
   - Name: JibberishHead0Positive
-    Volume: 0.86
+    Volume: 0.5
     audioClips:
     - {fileID: 8300000, guid: 16425927c8f455042b2ebeefe3c82b0c, type: 3}
     - {fileID: 8300000, guid: 0b6776c1d0d711b4a9567248a16d2985, type: 3}
@@ -98,7 +99,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 154f52d5265c4ff498738a12e61d80a1, type: 3}
     - {fileID: 8300000, guid: f5472d9a8da7e42499b38c1e545f4a12, type: 3}
   - Name: JibberishHead1Negative
-    Volume: 0.86
+    Volume: 0.5
     audioClips:
     - {fileID: 8300000, guid: 20a182bd757b2214795482c92ac44246, type: 3}
     - {fileID: 8300000, guid: 24fa38564ef5d8f4286a1ffddfe16d8b, type: 3}
@@ -109,7 +110,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 62ba09576a4cfb94398734a70e14cebe, type: 3}
     - {fileID: 8300000, guid: afb85dafc5a7db24a94683f15e0ba035, type: 3}
   - Name: JibberishHead1Positive
-    Volume: 0.86
+    Volume: 0.5
     audioClips:
     - {fileID: 8300000, guid: a12bf69ea59eb514cb60d6e816de97c1, type: 3}
     - {fileID: 8300000, guid: cf299d9bd029efe4aa4b2f7c698c540d, type: 3}
@@ -123,7 +124,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4ee584e29be0af343be10c87164d312f, type: 3}
     - {fileID: 8300000, guid: 535ca01aa2d6202419762e4486065448, type: 3}
   - Name: ThroatClear
-    Volume: 0.86
+    Volume: 0.374
     audioClips:
     - {fileID: 8300000, guid: 321ff1cd4b1503c4ab803a31b0426fed, type: 3}
     - {fileID: 8300000, guid: dbd336aed3a6c484aad4c71b81488887, type: 3}
@@ -137,3 +138,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 249260115a58cb2488ca82e8bd437a1f, type: 3}
     - {fileID: 8300000, guid: ff5ae64f665542d46ba54cb058f67363, type: 3}
     - {fileID: 8300000, guid: d1169b3e71bc5ab40bba470ee509aa93, type: 3}
+  - Name: Bloop
+    Volume: 0.9
+    audioClips:
+    - {fileID: 8300000, guid: 81cab9bdb23ff0f48abdf1eecf8fc67f, type: 3}
