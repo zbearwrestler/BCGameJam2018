@@ -848,6 +848,7 @@ MonoBehaviour:
   loveBombSpawn: {fileID: 1867501214}
   brainVelocity: 10
   brainCooldown: 0.5
+  loveBombVelocity: 0
   loveBombCooldown: 30
 --- !u!1 &897469586
 GameObject:
@@ -1044,7 +1045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeadID: 1
-  LinesDiologe: 25
+  LinesDialogue: 1
   AngryPrefab: {fileID: 1956700730340334, guid: 82825cb2d6534674e91e699739e6a014,
     type: 2}
   NeutralPrefab: {fileID: 1956700730340334, guid: 552bda6eb0122974d9c1b8c791f4c793,
@@ -1061,6 +1062,18 @@ MonoBehaviour:
   - {fileID: 559928847}
   FastestSpawnRate: 0.4
   SlowestSpawnRate: 1.3
+  DirectionSpread: 0.1
+  Collide_Angry_Aggro: 6
+  Collide_Angry_Comm: 0
+  Collide_PassAgg_Aggro: 3
+  Collide_PassAgg_Comm: -3
+  Collide_Neutral_Aggro: 0
+  Collide_Neutral_Comm: 1.5
+  Destroy_Neutral_Aggro: 6
+  Destroy_Neutral_Comm: -6
+  Collide_Positive_Aggro: -3
+  Collide_Positive_Comm: 3
+  IncrementMultiplier: 1
   IsStarter: 0
   target: {fileID: 1498214973}
 --- !u!1 &1186133591
@@ -1341,6 +1354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74270486e9cfcc749970893bda1870eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xspeed: 10
   health: 0
 --- !u!23 &1300882946
 MeshRenderer:
@@ -1632,7 +1646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeadID: 0
-  LinesDiologe: 24
+  LinesDialogue: 1
   AngryPrefab: {fileID: 1956700730340334, guid: 82825cb2d6534674e91e699739e6a014,
     type: 2}
   NeutralPrefab: {fileID: 1956700730340334, guid: 552bda6eb0122974d9c1b8c791f4c793,
@@ -1649,6 +1663,18 @@ MonoBehaviour:
   - {fileID: 1742658134}
   FastestSpawnRate: 0.4
   SlowestSpawnRate: 1.3
+  DirectionSpread: 0.1
+  Collide_Angry_Aggro: 6
+  Collide_Angry_Comm: 0
+  Collide_PassAgg_Aggro: 3
+  Collide_PassAgg_Comm: -3
+  Collide_Neutral_Aggro: 0
+  Collide_Neutral_Comm: 1.5
+  Destroy_Neutral_Aggro: 6
+  Destroy_Neutral_Comm: -6
+  Collide_Positive_Aggro: -3
+  Collide_Positive_Comm: 3
+  IncrementMultiplier: 1
   IsStarter: 1
   target: {fileID: 1074596040}
 --- !u!1 &1503446007
@@ -2318,6 +2344,21 @@ Prefab:
     - target: {fileID: 4034109048991806, guid: b51e0ba1b5279ca4c8fde4eacc51e8ff, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331606455611018, guid: b51e0ba1b5279ca4c8fde4eacc51e8ff,
+        type: 2}
+      propertyPath: Effects.Array.data[10].audioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 81cab9bdb23ff0f48abdf1eecf8fc67f, type: 3}
+    - target: {fileID: 114331606455611018, guid: b51e0ba1b5279ca4c8fde4eacc51e8ff,
+        type: 2}
+      propertyPath: Effects.Array.data[10].Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331606455611018, guid: b51e0ba1b5279ca4c8fde4eacc51e8ff,
+        type: 2}
+      propertyPath: volumeMultiplier
+      value: 0.97
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b51e0ba1b5279ca4c8fde4eacc51e8ff, type: 2}
