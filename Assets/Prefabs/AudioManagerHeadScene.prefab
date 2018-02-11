@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1363712794372894}
+  m_IsPrefabParent: 1
+--- !u!1 &1363712794372894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4034109048991806}
+  - component: {fileID: 114331606455611018}
+  m_Layer: 0
+  m_Name: AudioManagerHeadScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4034109048991806
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1363712794372894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.630558, y: 0.9202217, z: 0.16190994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114331606455611018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1363712794372894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c4aa15639118840973adabd0e644f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects:
+  - Name: BrainShot
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: 1ffe76ceda3b8794e8b1e9d2d20a25ff, type: 3}
+    - {fileID: 8300000, guid: 5ea46051f0f8e534690bd9b4bf5fb874, type: 3}
+    - {fileID: 8300000, guid: 62ae3d7607e3c7b468b1fcc2b0ac25b9, type: 3}
+    - {fileID: 8300000, guid: f43e315d32bf37c4eb7591c2721ecc22, type: 3}
+    - {fileID: 8300000, guid: de372dc670d22a74eb8cdd4d55cc2032, type: 3}
+    - {fileID: 8300000, guid: fb22f80fe76cc9d43a5609aff0a742c1, type: 3}
+    - {fileID: 8300000, guid: a8782841e0ae5a54fa671084d563cf97, type: 3}
+  - Name: LoveBomb
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: 2cb86a36a7719444c964fe82a3fc8890, type: 3}
+  - Name: BrainSlat
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: 8c29f4f0fcbe5824dbb56e0108daf7ff, type: 3}
+    - {fileID: 8300000, guid: d9818636be298bf488320de15da47b75, type: 3}
+    - {fileID: 8300000, guid: 68d7f572709532344b93401b258f9a41, type: 3}
+    - {fileID: 8300000, guid: 0bd8cd6b9e139354eaed116dc670a890, type: 3}
+    - {fileID: 8300000, guid: 324efc930bd9db545bc87383a8837470, type: 3}
+    - {fileID: 8300000, guid: a72cf1266bc31d744a161cbab138fbdc, type: 3}
+    - {fileID: 8300000, guid: 6bcdfd637adcf9e4a829f11dbe8d3cfd, type: 3}
+  - Name: JibberishHead0Negative
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: e9d69908e46ab6e43b1113f3407e3683, type: 3}
+    - {fileID: 8300000, guid: b936e1d34507542408c368f1eceabac0, type: 3}
+    - {fileID: 8300000, guid: 321e0b6bff1887844a892e5e31f44693, type: 3}
+    - {fileID: 8300000, guid: bee4e45e94fd0f64a994dae3ac8575bd, type: 3}
+    - {fileID: 8300000, guid: 9763f51def0e3f24ca752e729e020f97, type: 3}
+    - {fileID: 8300000, guid: 5ce2ee479f8b1b34c90dd34f40e1150e, type: 3}
+    - {fileID: 8300000, guid: 32bb746f54ab3764ba979ec305ff7fab, type: 3}
+    - {fileID: 8300000, guid: 0d7ee3ac7d2821846a3109a598b835bc, type: 3}
+    - {fileID: 8300000, guid: e0fcc19d322f2b84d914cf18e3f3948c, type: 3}
+    - {fileID: 8300000, guid: a64170856c268e947b97e1d2e655baaa, type: 3}
+  - Name: JibberishHead0Positive
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: 16425927c8f455042b2ebeefe3c82b0c, type: 3}
+    - {fileID: 8300000, guid: 0b6776c1d0d711b4a9567248a16d2985, type: 3}
+    - {fileID: 8300000, guid: 8d0fbef83b54ddd44a272e36748b6c91, type: 3}
+    - {fileID: 8300000, guid: 154f52d5265c4ff498738a12e61d80a1, type: 3}
+    - {fileID: 8300000, guid: f5472d9a8da7e42499b38c1e545f4a12, type: 3}
+  - Name: JibberishHead1Negative
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: 20a182bd757b2214795482c92ac44246, type: 3}
+    - {fileID: 8300000, guid: 24fa38564ef5d8f4286a1ffddfe16d8b, type: 3}
+    - {fileID: 8300000, guid: 2c21b4b5082e3794a9125e27761a55dc, type: 3}
+    - {fileID: 8300000, guid: f0c4e2fbcf20eba46bb124645f92df5c, type: 3}
+    - {fileID: 8300000, guid: 79f10cf1cfb83f241892fd771c3a2f42, type: 3}
+    - {fileID: 8300000, guid: 31606de336fa470499d9eb6e51a67521, type: 3}
+    - {fileID: 8300000, guid: 62ba09576a4cfb94398734a70e14cebe, type: 3}
+    - {fileID: 8300000, guid: afb85dafc5a7db24a94683f15e0ba035, type: 3}
+  - Name: JibberishHead1Positive
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: a12bf69ea59eb514cb60d6e816de97c1, type: 3}
+    - {fileID: 8300000, guid: cf299d9bd029efe4aa4b2f7c698c540d, type: 3}
+    - {fileID: 8300000, guid: 867150cdc122bdc4388f527ce131f97b, type: 3}
+    - {fileID: 8300000, guid: d65c59e40dd4e954cbce9f5d3d18bd40, type: 3}
+    - {fileID: 8300000, guid: 44b0d35f97e840d44944e26dfd12dfe1, type: 3}
+    - {fileID: 8300000, guid: 259c81ea88c9c3b4c96f52d2ecc51710, type: 3}
+  - Name: SHH
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: 4ee584e29be0af343be10c87164d312f, type: 3}
+    - {fileID: 8300000, guid: 535ca01aa2d6202419762e4486065448, type: 3}
+  - Name: ThroatClear
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: 321ff1cd4b1503c4ab803a31b0426fed, type: 3}
+    - {fileID: 8300000, guid: dbd336aed3a6c484aad4c71b81488887, type: 3}
+    - {fileID: 8300000, guid: 103eb8fe4aab79e4d955364190e7b1ab, type: 3}
+    - {fileID: 8300000, guid: adbc9c105c50cf74e91bba0aee882946, type: 3}
+  - Name: Uhmm
+    Volume: 0.86
+    audioClips:
+    - {fileID: 8300000, guid: e7c71d0537149014abae3aec1f22665d, type: 3}
+    - {fileID: 8300000, guid: a1a0cef41e2342a48a0b697486737729, type: 3}
+    - {fileID: 8300000, guid: 249260115a58cb2488ca82e8bd437a1f, type: 3}
+    - {fileID: 8300000, guid: ff5ae64f665542d46ba54cb058f67363, type: 3}
+    - {fileID: 8300000, guid: d1169b3e71bc5ab40bba470ee509aa93, type: 3}
