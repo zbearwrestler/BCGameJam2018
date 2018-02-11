@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TalkingHead : MonoBehaviour {
+public class TalkingHead : MonoBehaviour
+{
     //Public Variables
     public int HeadID;
 
     public float SpawnSpeed;
     public GameObject AngryPrefab;
     public GameObject NeutralPrefab;
-    public GameObject PassAggPositivePrefab;
+    public GameObject PassAggPrefab;
 
-    public Transform SpawnPosition;
-    public Transform CenterPosition;
+    public Transform[] SpawnPosition;
+    public Transform[] CenterPosition;
 
 
     public float Aggressiveness
@@ -50,9 +51,8 @@ public class TalkingHead : MonoBehaviour {
     }
 
     //Private Variables
-    private Vector2 mSpawnDirection;
+    private Vector2[] mSpawnDirections = new Vector2[3];
     private float mInsultSpawnTimer = 0;
-    private float mNeutralSpawnTimer = 0;
 
     private float mAggressiveness = 50f;
     private float mCommunicativeness = 50f;
@@ -67,18 +67,11 @@ public class TalkingHead : MonoBehaviour {
 
     void Update()
     {
-        mInsultSpawnTimer += Time.deltaTime*SpawnSpeed;
+        mInsultSpawnTimer += Time.deltaTime * SpawnSpeed;
         if (mInsultSpawnTimer >= 10)
         {
             mInsultSpawnTimer = 0;
-            SpawnInsult();
-        }
-
-        mNeutralSpawnTimer += Time.deltaTime * SpawnSpeed*(mCommunicativeness/100f);
-        if (mNeutralSpawnTimer >= 5)
-        {
-            mNeutralSpawnTimer = 0;
-            SpawnNeutral();
+            SpawnTextProjectile();
         }
 
     }
@@ -112,7 +105,7 @@ public class TalkingHead : MonoBehaviour {
                         break;
                 }
                 Destroy(collision.gameObject);
-                
+
             }
         }
     }
@@ -123,19 +116,27 @@ public class TalkingHead : MonoBehaviour {
     //Custom Functions
     private void Init()
     {
-        mSpawnDirection = (SpawnPosition.position - CenterPosition.position).normalized;
+        for (int i = 0; i < 3; ++i)
+        {
+            mSpawnDirections[i] = (SpawnPosition[i].position - CenterPosition[i].position).normalized;
+        }
     }
 
-    private void SpawnInsult()
+    private void SpawnTextProjectile()
     {
-        GameObject spawnedObject = GameObject.Instantiate((Random.Range(0,100)>mAggressiveness) ? PassAggPositivePrefab : AngryPrefab, SpawnPosition.position, Quaternion.identity);
-        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, HeadID, 0);
-    }
+        //calculate odds
+        float totalOdds = Communicativeness + 100f;
+        float randomResult = Random.Range(0, totalOdds);
 
-    private void SpawnNeutral()
-    {
-        GameObject spawnedObject = GameObject.Instantiate(NeutralPrefab, SpawnPosition.position, Quaternion.identity);
-        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirection, HeadID, 0);
+        GameObject prefabToSpawn = AngryPrefab;
+        if (randomResult < Communicativeness) { prefabToSpawn = NeutralPrefab; }
+        else if (randomResult < Communicativeness + Aggressiveness) { prefabToSpawn = PassAggPrefab; }
+
+        int spawnLane = Random.Range(0, 3);
+
+        //spawn
+        GameObject spawnedObject = GameObject.Instantiate(prefabToSpawn, SpawnPosition[spawnLane].position, Quaternion.identity);
+        spawnedObject.GetComponent<TextProjectile>().Initialize(mSpawnDirections[spawnLane], HeadID, 0);
     }
 
 }

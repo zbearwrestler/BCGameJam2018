@@ -57,7 +57,7 @@ public class TextProjectile : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "PlayerBullet")
+        if (collision.gameObject.tag == "PlayerBullet")
         {
             Destroy(collision.gameObject);
 
@@ -65,10 +65,27 @@ public class TextProjectile : MonoBehaviour {
             {
                 ProjectileType = Type.Positive;
                 AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
-            }else
+            }
+            else
             {
-                Destroy(gameObject);
+                Destroy(collision.gameObject);
             }
         }
     }
+
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.gameObject.tag == "PlayerBullet")
+    //    {
+    //        if (ProjectileType == Type.Positive || ProjectileType == Type.PassAggressive)
+    //        {
+    //            ProjectileType = Type.Positive;
+    //            AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
+    //        }else
+    //        {
+    //            Destroy(gameObject);
+    //        }
+    //    }
+    //}
 }
