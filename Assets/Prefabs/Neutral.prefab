@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileType: 2
-  Speed: 0.15
+  Speed: 0.02
   AttachedTextMesh: {fileID: 102060016681772744}
 --- !u!212 &212222755107094654
 SpriteRenderer:
