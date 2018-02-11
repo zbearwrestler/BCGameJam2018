@@ -38,12 +38,12 @@ public class FireScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire1")  || Input.GetKeyDown(KeyCode.Space)) //fire button
+        if (Input.GetButton("Fire1")  || Input.GetKey(KeyCode.Space)) //fire button
         {
             FireBrain();
             
         }
-        if(Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetButtonDown("Fire2") || Input.GetKey(KeyCode.LeftShift))
         {
             FireLoveBomb();
         }
