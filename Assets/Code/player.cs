@@ -7,7 +7,7 @@ public class player : MonoBehaviour {
     private float yrange = 10;
     private float xrange = 5;
     private float yspeed = 0;
-    private float xspeed = 10;
+    [SerializeField]private float xspeed = 10;
 
     [Header("Health Settings")]
     public float health;
