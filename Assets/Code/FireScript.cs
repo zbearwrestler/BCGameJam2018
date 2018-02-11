@@ -57,7 +57,8 @@ public class FireScript : MonoBehaviour
 
         if (Time.time > lastBrainFireTime + brainCooldown)
         {
-            gameObject.GetComponent<AudioSource>().Play();
+            //gameObject.GetComponent<AudioSource>().Play();
+            AudioManager.Play("BrainShot");
 
             GameObject bullet = Instantiate(brainPrefab, bulletSpawn);
 
@@ -77,7 +78,7 @@ public class FireScript : MonoBehaviour
         if (Time.time > lastLoveBombFireTime + loveBombCooldown)
         {
 
-
+            AudioManager.Play("LoveBomb");
             GameObject bullet = Instantiate(loveBombPrefab, bulletSpawn);
 
             bullet.transform.parent = null;

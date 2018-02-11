@@ -150,17 +150,20 @@ public class TalkingHead : MonoBehaviour
                         //Aggressiveness += 2*mIncrement;
                         Aggressiveness += (Collide_Angry_Aggro*IncrementMultiplier);
                         Communicativeness += (Collide_Angry_Comm * IncrementMultiplier);
+                        //AudioManager.Play("ThroatClear");
                         break;
                     case TextProjectile.Type.PassAggressive:
                         //Aggressiveness += mIncrement;
                         //Communicativeness -= mIncrement;
                         Aggressiveness += (Collide_PassAgg_Aggro * IncrementMultiplier);
                         Communicativeness += (Collide_PassAgg_Comm * IncrementMultiplier);
+                        //AudioManager.Play("ThroatClear");
                         break;
                     case TextProjectile.Type.Neutral:
                         //Communicativeness += mIncrement/2f;
                         Aggressiveness += (Collide_Neutral_Aggro * IncrementMultiplier);
                         Communicativeness += (Collide_Neutral_Comm * IncrementMultiplier);
+                        //AudioManager.Play("ThroatClear");
                         break;
                     case TextProjectile.Type.Positive:
                         //Communicativeness += mIncrement;
@@ -218,6 +221,9 @@ public class TalkingHead : MonoBehaviour
         {
             mAnimator.SetTrigger("Talk");
         }
+
+        //play sound effect
+        AudioManager.Play((HeadID == 1) ? "JibberishHead1Negative" : "JibberishHead0Negative");
     }
 
     public void TriggerWaitToReply()

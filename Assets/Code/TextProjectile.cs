@@ -79,6 +79,10 @@ public class TextProjectile : MonoBehaviour {
 
             if (ProjectileType == Type.Positive || ProjectileType == Type.PassAggressive)
             {
+                if (ProjectileType == Type.PassAggressive)
+                {
+                    AudioManager.Play("Bloop");
+                }
                 ProjectileType = Type.Positive;
                 AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -90,9 +94,12 @@ public class TextProjectile : MonoBehaviour {
                 if (ProjectileType == Type.Neutral)
                 {
                     //shot down neutral - notify talking head
+                    AudioManager.Play("SHH");
                     TalkingHeadManager.Instance.NotifyWasInterrupted(SpawnedBy);
+                    
                 }
                 Destroy(gameObject);
+                AudioManager.Play("BrainSlat");
             }
         }
     }
