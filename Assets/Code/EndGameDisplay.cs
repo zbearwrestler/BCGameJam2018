@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class EndGameDisplay : MonoBehaviour {
     public Text displayText;
+    public GameObject winBackground;
+    public GameObject loseBackground;
+
     private string messageString = "";
     private string[] actionStrings =
     {
@@ -61,6 +64,9 @@ public class EndGameDisplay : MonoBehaviour {
                 messageString += "something impossible happened";
                 break;
         }
+        bool won = (GameScore.Instance.Result == GameScore.EndResult.Win);
+        winBackground.SetActive(won);
+        loseBackground.SetActive(!won);
 
         displayText.text = messageString;
 
