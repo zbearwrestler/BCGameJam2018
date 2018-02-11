@@ -383,6 +383,6 @@ MonoBehaviour:
   low: {fileID: 245575933283855886, guid: bdca456ef66372842b034fb56c086130, type: 2}
   medium: {fileID: 245315122085415214, guid: bdca456ef66372842b034fb56c086130, type: 2}
   Intense: {fileID: 245155236588962732, guid: bdca456ef66372842b034fb56c086130, type: 2}
-  rightHead: {fileID: 0}
-  leftHead: {fileID: 0}
+  rightHead: {fileID: 1814417463642180, guid: 91f382f974cfd5441990a255644034ca, type: 2}
+  leftHead: {fileID: 1908216795306234, guid: f38c3ff9382f7ea43bcb9cdf6e30db5b, type: 2}
   bpm: 120
