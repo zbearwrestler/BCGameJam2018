@@ -103,11 +103,7 @@ public class TextProjectile : MonoBehaviour {
                     TalkingHeadManager.Instance.NotifyWasInterrupted(SpawnedBy);
                     
                 }
-<<<<<<< HEAD
                 SpawnDestroyedParticles();
-                Destroy(gameObject);
-=======
->>>>>>> 3d7b956a116b27b0257d9514bfa07a4dbeb683b0
                 AudioManager.Play("BrainSlat");
                 Destroy(gameObject);
             }
