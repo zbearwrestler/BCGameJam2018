@@ -15,6 +15,13 @@ public class TextProjectile : MonoBehaviour {
     private int spawnedBy;
     private int convoIndex;
 
+    private Color angryColor = new Color(1f,0f,0f);
+    private Color passAggressiveColor = new Color(0.282f,0f,1f);
+    private Color neutralColor = new Color(0.5f, 0.5f, 0.5f);
+    private Color positiveColor = new Color(0f,0.578f,1f);
+
+    private SpriteRenderer mSpriteRenderer;
+
     public int SpawnedBy
     {
         get
@@ -36,10 +43,13 @@ public class TextProjectile : MonoBehaviour {
         if (angle > 90) { angle -= 180; }
         else if (angle < -90) { angle += 180; }
 
+        mSpriteRenderer = GetComponent<SpriteRenderer>();
+
         transform.rotation = Quaternion.Euler(0,0,angle);
         spawnedBy = spawnerID;
         convoIndex = line;
         SetUpText();
+        SetColor();
     }
 
     private void SetUpText()
@@ -73,6 +83,7 @@ public class TextProjectile : MonoBehaviour {
                 AttachedTextMesh.text = ArgumentText.GetLine("Positive", spawnedBy, convoIndex);
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 GetComponent<Rigidbody2D>().angularVelocity = 0f;
+                SetColor();
             }
             else
             {
@@ -83,6 +94,27 @@ public class TextProjectile : MonoBehaviour {
                 }
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private void SetColor()
+    {
+        switch (ProjectileType)
+        {
+            case Type.Angry:
+                mSpriteRenderer.color = angryColor;
+                break;
+            case Type.PassAggressive:
+                mSpriteRenderer.color = passAggressiveColor;
+                break;
+            case Type.Neutral:
+                mSpriteRenderer.color = neutralColor;
+                break;
+            case Type.Positive:
+                mSpriteRenderer.color = positiveColor;
+                break;
+            default:
+                break;
         }
     }
 
