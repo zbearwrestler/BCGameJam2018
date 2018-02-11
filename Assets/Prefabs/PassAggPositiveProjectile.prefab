@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileType: 1
-  Speed: 0.04
+  Speed: 0.06
   AttachedTextMesh: {fileID: 102154280884978980}
   positiveSprite: {fileID: 21300000, guid: 72b90f3b614b6954fb4fdbfcae9e09a8, type: 3}
 --- !u!212 &212123241100407892
