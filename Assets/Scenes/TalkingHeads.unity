@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeadID: 1
-  LinesDialogue: 1
+  LinesDialogue: 25
   AngryPrefab: {fileID: 1956700730340334, guid: 82825cb2d6534674e91e699739e6a014,
     type: 2}
   NeutralPrefab: {fileID: 1956700730340334, guid: 552bda6eb0122974d9c1b8c791f4c793,
@@ -1646,7 +1646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeadID: 0
-  LinesDialogue: 1
+  LinesDialogue: 25
   AngryPrefab: {fileID: 1956700730340334, guid: 82825cb2d6534674e91e699739e6a014,
     type: 2}
   NeutralPrefab: {fileID: 1956700730340334, guid: 552bda6eb0122974d9c1b8c791f4c793,
