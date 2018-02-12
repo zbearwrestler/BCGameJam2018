@@ -20,7 +20,7 @@ public class ArgumentText : MonoBehaviour{
 
     //private void Awake()
     //{
-        //DontDestroyOnLoad(this);
+    //DontDestroyOnLoad(this);
     //}
 
     private static void OnSeanLoad(Scene scene, LoadSceneMode mode)
